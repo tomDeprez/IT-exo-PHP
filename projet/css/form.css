@@ -100,3 +100,18 @@ hr {
       padding: 10px 15px;
   }
 }
+
+.loading {
+  border: 5px solid #f3f3f3; /* Couleur de fond */
+  border-top: 5px solid #3498db; /* Couleur de la bordure supérieure */
+  border-radius: 50%; /* Rend le loader circulaire */
+  width: 40px; /* Largeur du loader */
+  height: 40px; /* Hauteur du loader */
+  animation: spin 0.5s linear infinite; /* Animation nommée spin */
+}
+
+/* Animation keyframes pour spin */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

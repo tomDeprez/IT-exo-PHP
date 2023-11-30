@@ -1,5 +1,26 @@
 <?php
 
+class HTMLElement {
+    public $innerHTML;
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class Employe {
     private $nom;
     private $age;

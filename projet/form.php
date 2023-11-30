@@ -45,8 +45,9 @@
                 <form class="card p-2">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Promo code">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-secondary" style="height: 100%;">Redeem</button>
+                        <div class="input-group-append" id="promoCodeBtn">
+                            <button type="submit" class="btn btn-secondary" style="height: 100%;" onclick="loading();">Redeem</button>
+
                         </div>
                     </div>
                 </form>
@@ -222,7 +223,9 @@
                         </div>
                     </div>
                     <hr class="mb-4">
-                    <button class="btn btn-primary btn-lg btn-block" type="submit" id="checkoutForm" onclick="onFormSubmit(event)">Continue to checkout</button>
+                    <div>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit" id="checkoutForm" onclick="onFormSubmit(event)">Continue to checkout</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -271,10 +274,10 @@
         function showErrorModal() {
             $('#errorModal').modal('show');
         }
-        document.querySelector('.card.p-2').addEventListener('submit', function(event) {
-            event.preventDefault(); // Empêche la soumission standard du formulaire
-            showErrorModal(); // Affiche la modale d'erreur
-        });
+        // document.querySelector('.card.p-2').addEventListener('submit', function(event) {
+        //     event.preventDefault(); // Empêche la soumission standard du formulaire
+        //     showErrorModal(); // Affiche la modale d'erreur
+        // });
 
 
         // Fonction pour mettre à jour le total du panier
@@ -328,7 +331,7 @@
             var totalItem = document.getElementById('total');
             var currentTotal = parseFloat(totalItem.textContent.replace('$', ''));
             var taxRate = 0.20; // Taux de TVA de 20%
-            var taxAmount = currentTotal * taxRate / 10;
+            var taxAmount = currentTotal * taxRate;
 
             var cartList = document.getElementById('cartList');
             var taxItem = document.getElementById('taxItem'); // Recherche d'un élément existant avec l'id 'taxItem'
@@ -418,7 +421,7 @@
         }
 
         // Appeler la fonction au chargement de la page
-        window.onload = countPageReloads;
+        // window.onload = countPageReloads;
 
         document.getElementById('country').addEventListener('change', function() {
             var selectedCountry = this.value;
@@ -426,8 +429,7 @@
 
             // Simuler un bug : le champ ne s'affiche pas toujours comme prévu
             if (selectedCountry === 'United States') {
-                var shouldDisplay = Math.random() > 0.5; // 50% de chances d'afficher le champ
-                detailsField.style.display = shouldDisplay ? 'block' : 'none';
+                detailsField.style.display = 'block';
             } else {
                 detailsField.style.display = 'none';
             }
@@ -437,6 +439,20 @@
         // Ajout de l'écouteur d'événement de soumission au formulaire
     </script>
 
+    <script>
+        function loading() {
+            var tempo = document.getElementById("promoCodeBtn").innerHTML = 
+            document.getElementById("promoCodeBtn").innerHTML = ""
+            document.getElementById("promoCodeBtn").innerHTML = "<div class='loading'></div>"
+
+            setTimeout(() => {
+                document.getElementById("promoCodeBtn").innerHTML = tempo 
+            }, 2000);
+
+
+            // document.getElementById("promoCodeBtn").innerHTML = tempo
+        }
+    </script>
 
 </body>
 
